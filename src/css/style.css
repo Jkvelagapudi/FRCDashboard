@@ -33,7 +33,7 @@ select {
     border: none;
     background: none;
     color: white;
-    height: 25px;
+    height: 30px;
 }
 input[type="text"], input[type="number"] {
     cursor: text;
