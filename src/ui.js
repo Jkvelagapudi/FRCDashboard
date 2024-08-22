@@ -58,6 +58,12 @@ NetworkTables.addKeyListener('/SmartDashboard/example_variable', (key, value) =>
     ui.example.readout.data = 'Value is ' + value;
 });
 
+NetworkTables.addKeyListener('/Shuffleboard/Module/Module 3 Speed', (key, value) => {
+    // Set class active if value is true and unset it if it is false
+    // ui.example.button.classList.toggle('active', value);
+    ui.example.readout.data = 'Value is ' + value;
+});
+
 NetworkTables.addKeyListener('/robot/time', (key, value) => {
     // This is an example of how a dashboard could display the remaining time in a match.
     // We assume here that value is an integer representing the number of seconds left.
