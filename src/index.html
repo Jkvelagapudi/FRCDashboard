@@ -10,34 +10,15 @@
 </head>
 
 <body>
-    <div id="timer">2:15</div>
     <header>
         <!-- Tells whether robot is connected to dashboard. -->
         <div id="robot-state">Unknown state</div>
         <button id="connect-button">Connect</button>
     </header>
-    <!-- You'll need to mess around with the CSS of #camera (found in css/style.css) to get it to work.
-        More explanation in that CSS rule. -->
-    <div id="camera"></div>
-    <!-- The main body of the dashboard, by default contains the gyro monitor and the robot diagram -->
-    <article>
-        <!-- Gyroscope -->
-        <svg id="gyro">
-            <circle cx="85" cy="85" r="83"></circle>
-            <circle cx="85" cy="85" r="50"></circle>
-            <rect id="gyro-arm" x="80" y="5" width="10" height="80"></rect>
-            <text id="gyro-number" x="90" y="115">0º</text>
-        </svg>
 
-    </article>
     <!-- The sidebar of the dashboard. Designed for smaller control elements like selection boxes and small buttons. -->
     <aside>
-        <!-- Example button which toggles /SmartDashboard/exampleValue NetworkTables value.
-            The <p> below then says the value. -->
-        <div id="example-section">
-            <button id="example-button">Change example value</button>
-            <p id="example-readout">Value is undefined</p>
-        </div>
+
         <!-- Autonomous selector -->
         <div class="select-container">
             <select id="auto-select">
