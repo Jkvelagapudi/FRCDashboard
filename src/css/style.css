@@ -6,6 +6,63 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+/* Sidebar styles */
+aside#sidebar-menu {
+    position: fixed;
+    right: -20vw;
+    top: 0;
+    width: 20vw;
+    height: 100vh;
+    background: #222;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 60px 20px 20px; /* Adjust padding to create space for the close button */
+    display: none;
+}
+
+aside#sidebar-menu.open {
+    right: 0;
+    display: block;
+}
+
+/* Sidebar content */
+#menu-content {
+    color: white;
+}
+
+#menu-content h3 {
+    margin-bottom: 20px;
+}
+
+/* Close button */
+#close-menu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+}
+
+/* Menu trigger */
+#menu-trigger {
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+/* Hide original content under the sidebar */
+aside#sidebar-menu.open ~ * {
+    filter: blur(2px);
+}
+
+
+
 body {
     font: 16px sans-serif;
     -webkit-user-select: none;
