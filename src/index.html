@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>FRC Dashboard</title>
@@ -12,49 +11,94 @@
 <body>
     <div id="timer">2:15</div>
     <header>
-        <!-- Tells whether robot is connected to dashboard. -->
         <div id="robot-state">Unknown state</div>
         <button id="connect-button">Connect</button>
     </header>
 
     <!-- Trigger SVG for the side menu -->
-    <svg id="menu-trigger" onclick="openMenu()" width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- SVG content here -->
-        <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"></path>
-
+    <svg id="menu-trigger" onclick="openMenu()" width="50" height="50" viewBox="0 0 100 100">
+        <use href="/mnt/data/hamburger-menu-4.svg"></use>
     </svg>
 
     <!-- Sidebar menu -->
     <aside id="sidebar-menu">
-        <button id="close-menu" onclick="closeMenu()"> Close </button>
+        <button id="close-menu" onclick="closeMenu()"> 
+            <svg width="30" height="30">
+                <use href=""></use>
+            </svg>
+        </button>
         <div id="menu-content">
             <h3>Menu</h3>
-
-            <!-- Additional menu content can go here -->
+            <ul>
+                <li><button onclick="navigateTo('main')"> Main </button></li>
+                <li><button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button></li>
+                <li><button onclick="navigateTo('shuffleboard')">Shuffleboard</button></li>
+            </ul>
         </div>
     </aside>
 
-    <div id="login">
-        <input id="connect-address" type="text" value="localhost" disabled>
-        <button id="connect" disabled>Connecting</button>
-    </div>
+    <!-- Main content -->
+    <article id="main-content">
+        <h2>Welcome to *insert name*</h2>
+
+        <div id="login">
+            <input id="connect-address" type="text" value="localhost" disabled>
+            <button id="connect" disabled>Connecting</button>
+        </div>
+
+        <div id="navigation-buttons">
+            <button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button>
+            <button onclick="navigateTo('shuffleboard')">Shuffleboard</button>
+        </div>
+    </article>
 
     <script src="networktables/networktables.js"></script>
     <script src="ui.js"></script>
     <script src="connection.js"></script>
     <script src="../node_modules/@frc-web-components/frc-web-components/build/frc-web-components.min.js"></script>
     <script>
-        // JavaScript to open/close the menu
+        // JavaScript to open/close the menu with animation
         function openMenu() {
-            document.getElementById('sidebar-menu').classList.add('open');
+            const menu = document.getElementById('sidebar-menu');
+            menu.style.display = 'block';
+            setTimeout(() => {
+                menu.classList.add('open');
+            }, 10);
         }
 
         function closeMenu() {
-            document.getElementById('sidebar-menu').classList.remove('open');
+            const menu = document.getElementById('sidebar-menu');
+            menu.classList.remove('open');
+            setTimeout(() => {
+                menu.style.display = 'none';
+            }, 500); // Match this duration to the CSS transition
+        }
+
+        function navigateTo(page) {
+            const mainContent = document.getElementById('main-content');
+
+            if (page === 'pit-dashboard') {
+                mainContent.innerHTML = `
+                    <h2>Pit Dashboard</h2>
+                    <p>This is the pit dashboard test.</p>
+                `;
+            } else if (page === 'shuffleboard') {
+                mainContent.innerHTML = `
+                    <h2>Shuffleboard</h2>
+                    <p>This is a shuffleboard test.</p>
+                `;
+            } else if (page === 'main') {
+                mainContent.innerHTML = `
+                    <h2>Welcome to *insert name*</h2>
+                    <div id="navigation-buttons">
+                        <button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button>
+                        <button onclick="navigateTo('shuffleboard')">Shuffleboard</button>
+                    </div>
+                `;
+            }
+
+            closeMenu();
         }
     </script>
 </body>
-
-
-
 </html>
