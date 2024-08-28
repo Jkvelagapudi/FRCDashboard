@@ -2,18 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>FRC Dashboard</title>
+        <title>Freaky Dashboard</title>
         <link href="css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="css/multicamera.css">
         <link rel="stylesheet" href="css/gyro.css">
     </head>
 
     <body>
-        <!-- <div id="timer">2:15</div> -->
-        <header>
-            <!-- <div id="robot-state">Unknown state</div> -->
-            <!-- <button id="connect-button"></button> -->
-        </header>
 
         <div id = "menu-trigger" onclick="toggleMenu()">
             <img src="assets/images/Menu_Icon.png" alt = "Menu" id = "menu-icon">
@@ -22,12 +17,12 @@
         <!-- Sidebar menu -->
         <aside id="sidebar-menu">
             <div id="menu-content">
-                <h3>Menu</h3>
-                <ul>
-                    <li><button onclick="navigateTo('main')"> Main </button></li>
-                    <li><button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button></li>
-                    <li><button onclick="navigateTo('shuffleboard')">Shuffleboard</button></li>
-                </ul>
+                <h3 class="menu-title">Menu</h3>
+                <div class="menu-list">
+                    <a href="index.html"><button>Main</button></a>
+                    <a href="competition.html"><button>Competition</button></a>
+                    <a href="pit.html"><button>Pit Dashboard</button></a>
+                </div>
 
                 <div id="login">
                     <input id="connect-address" type="text" value="localhost" disabled>
@@ -39,11 +34,11 @@
 
         <!-- Main content -->
         <article id="main-content">
-            <h2>Welcome to *insert name*</h2>
+            <h2>Welcome to Freaky Board</h2>
 
             <div id="navigation-buttons">
                 <button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button>
-                <button onclick="navigateTo('shuffleboard')">Shuffleboard</button>
+                <button onclick="navigateTo('shuffleboard')">Competition</button>
             </div>
         </article>
 
@@ -83,32 +78,6 @@
                 setTimeout(() => {
                     menu.style.display = 'none';
                 }, 500); // Match this duration to the CSS transition
-            }
-
-            function navigateTo(page) {
-                const mainContent = document.getElementById('main-content');
-
-                if (page === 'pit-dashboard') {
-                    mainContent.innerHTML = `
-                        <h2>Pit Dashboard</h2>
-                        <p>This is the pit dashboard test.</p>
-                    `;
-                } else if (page === 'shuffleboard') {
-                    mainContent.innerHTML = `
-                        <h2>Shuffleboard</h2>
-                        <p>This is a shuffleboard test.</p>
-                    `;
-                } else if (page === 'main') {
-                    mainContent.innerHTML = `
-                        <h2>Welcome to *insert name*</h2>
-
-                        <div id="navigation-buttons">
-                            <button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button>
-                            <button onclick="navigateTo('shuffleboard')">Shuffleboard</button>
-                        </div>
-                    `;
-                }
-                toggleMenu();
             }
         </script>
     </body>

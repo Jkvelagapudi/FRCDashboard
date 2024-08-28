@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuffleboard</title>
+    <link rel="stylesheet" href="pit.css">
+</head>
+<body>
+
+    <div id = "menu-trigger" onclick="toggleMenu()">
+        <img src="assets/images/Menu_Icon.png" alt = "Menu" id = "menu-icon">
+    </div>
+
+    <aside id="sidebar-menu">
+        <div id="menu-content">
+            <h3 class="menu-title">Menu</h3>
+            <div class="menu-list">
+                <a href="index.html"><button>Main</button></a>
+                <a href="competition.html"><button>Competition</button></a>
+                <a href="pit.html"><button>Pit Dashboard</button></a>
+            </div>
+
+            <div id="login">
+                <input id="connect-address" type="text" value="localhost" disabled>
+                <div id="robot-state">Unknown state</div>
+                <button id="connect">Connecting</button>
+            </div>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <h2>Welcome to the Pit</h2>
+        <!-- Shuffleboard content goes here -->
+    </main>
+
+    <script src="networktables/networktables.js"></script>
+    <script src="ui.js"></script>
+    <script src="connection.js"></script>
+    <script src="../node_modules/@frc-web-components/frc-web-components/build/frc-web-components.min.js"></script>
+    <script>
+        // JavaScript to open/close the menu with animation
+        function toggleMenu() {
+            const menu = document.getElementById('sidebar-menu');
+            const menuTrigger = document.getElementById('menu-trigger');
+            const menuIcon = document.getElementById('menu-icon');
+
+            // Closing menu animation
+            if (menu.classList.contains('open')) {
+                menu.classList.remove('open');
+                setTimeout(() => {
+                    menu.style.display = 'none';
+                }, 500); // Match this duration to the CSS transition
+                menuTrigger.classList.remove('open');
+                menuIcon.src = 'assets/images/Menu_Icon.png'; // Switch back to hamburger icon
+            } else {
+                // Opening menu animation
+                menu.style.display = 'block';
+                setTimeout(() => {
+                    menu.classList.add('open');
+                }, 10);
+                menuTrigger.classList.add('open');
+                menuIcon.src = 'assets/images/Menu_Icon_Close.png'; // Switch to close icon
+            }
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('sidebar-menu');
+            menu.classList.remove('open');
+            setTimeout(() => {
+                menu.style.display = 'none';
+            }, 500); // Match this duration to the CSS transition
+        }
+    </script>
+
+</body>
+</html>
