@@ -1,104 +1,115 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>FRC Dashboard</title>
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/multicamera.css">
-    <link rel="stylesheet" href="css/gyro.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>FRC Dashboard</title>
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/multicamera.css">
+        <link rel="stylesheet" href="css/gyro.css">
+    </head>
 
-<body>
-    <div id="timer">2:15</div>
-    <header>
-        <div id="robot-state">Unknown state</div>
-        <button id="connect-button">Connect</button>
-    </header>
+    <body>
+        <!-- <div id="timer">2:15</div> -->
+        <header>
+            <!-- <div id="robot-state">Unknown state</div> -->
+            <!-- <button id="connect-button"></button> -->
+        </header>
 
-    <!-- Trigger SVG for the side menu -->
-    <svg id="menu-trigger" onclick="openMenu()" width="50" height="50" viewBox="0 0 100 100">
-        <use href="/mnt/data/hamburger-menu-4.svg"></use>
-    </svg>
-
-    <!-- Sidebar menu -->
-    <aside id="sidebar-menu">
-        <button id="close-menu" onclick="closeMenu()"> 
-            <svg width="30" height="30">
-                <use href=""></use>
-            </svg>
-        </button>
-        <div id="menu-content">
-            <h3>Menu</h3>
-            <ul>
-                <li><button onclick="navigateTo('main')"> Main </button></li>
-                <li><button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button></li>
-                <li><button onclick="navigateTo('shuffleboard')">Shuffleboard</button></li>
-            </ul>
-        </div>
-    </aside>
-
-    <!-- Main content -->
-    <article id="main-content">
-        <h2>Welcome to *insert name*</h2>
-
-        <div id="login">
-            <input id="connect-address" type="text" value="localhost" disabled>
-            <button id="connect" disabled>Connecting</button>
+        <div id = "menu-trigger" onclick="toggleMenu()">
+            <img src="assets/images/Menu_Icon.png" alt = "Menu" id = "menu-icon">
         </div>
 
-        <div id="navigation-buttons">
-            <button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button>
-            <button onclick="navigateTo('shuffleboard')">Shuffleboard</button>
-        </div>
-    </article>
+        <!-- Sidebar menu -->
+        <aside id="sidebar-menu">
+            <div id="menu-content">
+                <h3>Menu</h3>
+                <ul>
+                    <li><button onclick="navigateTo('main')"> Main </button></li>
+                    <li><button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button></li>
+                    <li><button onclick="navigateTo('shuffleboard')">Shuffleboard</button></li>
+                </ul>
 
-    <script src="networktables/networktables.js"></script>
-    <script src="ui.js"></script>
-    <script src="connection.js"></script>
-    <script src="../node_modules/@frc-web-components/frc-web-components/build/frc-web-components.min.js"></script>
-    <script>
-        // JavaScript to open/close the menu with animation
-        function openMenu() {
-            const menu = document.getElementById('sidebar-menu');
-            menu.style.display = 'block';
-            setTimeout(() => {
-                menu.classList.add('open');
-            }, 10);
-        }
+                <div id="login">
+                    <input id="connect-address" type="text" value="localhost" disabled>
+                    <div id="robot-state">Unknown state</div>
+                    <button id="connect">Connecting</button>
+                </div>
+            </div>
+        </aside>
 
-        function closeMenu() {
-            const menu = document.getElementById('sidebar-menu');
-            menu.classList.remove('open');
-            setTimeout(() => {
-                menu.style.display = 'none';
-            }, 500); // Match this duration to the CSS transition
-        }
+        <!-- Main content -->
+        <article id="main-content">
+            <h2>Welcome to *insert name*</h2>
 
-        function navigateTo(page) {
-            const mainContent = document.getElementById('main-content');
+            <div id="navigation-buttons">
+                <button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button>
+                <button onclick="navigateTo('shuffleboard')">Shuffleboard</button>
+            </div>
+        </article>
 
-            if (page === 'pit-dashboard') {
-                mainContent.innerHTML = `
-                    <h2>Pit Dashboard</h2>
-                    <p>This is the pit dashboard test.</p>
-                `;
-            } else if (page === 'shuffleboard') {
-                mainContent.innerHTML = `
-                    <h2>Shuffleboard</h2>
-                    <p>This is a shuffleboard test.</p>
-                `;
-            } else if (page === 'main') {
-                mainContent.innerHTML = `
-                    <h2>Welcome to *insert name*</h2>
-                    <div id="navigation-buttons">
-                        <button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button>
-                        <button onclick="navigateTo('shuffleboard')">Shuffleboard</button>
-                    </div>
-                `;
+        <script src="networktables/networktables.js"></script>
+        <script src="ui.js"></script>
+        <script src="connection.js"></script>
+        <script src="../node_modules/@frc-web-components/frc-web-components/build/frc-web-components.min.js"></script>
+        <script>
+            // JavaScript to open/close the menu with animation
+            function toggleMenu() {
+                const menu = document.getElementById('sidebar-menu');
+                const menuTrigger = document.getElementById('menu-trigger');
+                const menuIcon = document.getElementById('menu-icon');
+
+                // Closing menu animation
+                if (menu.classList.contains('open')) {
+                    menu.classList.remove('open');
+                    setTimeout(() => {
+                        menu.style.display = 'none';
+                    }, 500); // Match this duration to the CSS transition
+                    menuTrigger.classList.remove('open');
+                    menuIcon.src = 'assets/images/Menu_Icon.png'; // Switch back to hamburger icon
+                } else {
+                    // Opening menu animation
+                    menu.style.display = 'block';
+                    setTimeout(() => {
+                        menu.classList.add('open');
+                    }, 10);
+                    menuTrigger.classList.add('open');
+                    menuIcon.src = 'assets/images/Menu_Icon_Close.png'; // Switch to close icon
+                }
             }
 
-            closeMenu();
-        }
-    </script>
-</body>
+            function closeMenu() {
+                const menu = document.getElementById('sidebar-menu');
+                menu.classList.remove('open');
+                setTimeout(() => {
+                    menu.style.display = 'none';
+                }, 500); // Match this duration to the CSS transition
+            }
+
+            function navigateTo(page) {
+                const mainContent = document.getElementById('main-content');
+
+                if (page === 'pit-dashboard') {
+                    mainContent.innerHTML = `
+                        <h2>Pit Dashboard</h2>
+                        <p>This is the pit dashboard test.</p>
+                    `;
+                } else if (page === 'shuffleboard') {
+                    mainContent.innerHTML = `
+                        <h2>Shuffleboard</h2>
+                        <p>This is a shuffleboard test.</p>
+                    `;
+                } else if (page === 'main') {
+                    mainContent.innerHTML = `
+                        <h2>Welcome to *insert name*</h2>
+
+                        <div id="navigation-buttons">
+                            <button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button>
+                            <button onclick="navigateTo('shuffleboard')">Shuffleboard</button>
+                        </div>
+                    `;
+                }
+                toggleMenu();
+            }
+        </script>
+    </body>
 </html>

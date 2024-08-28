@@ -102,7 +102,7 @@ function createWindow() {
         // It's best if the dashboard takes up as much space as possible without covering the DriverStation application.
         // The window is closed until the python server is ready
         show: false,
-        icon: __dirname + '/../images/icon.png',
+        icon: __dirname + '/assets/images/icon.png',
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
         }

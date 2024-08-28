@@ -1,6 +1,6 @@
 let address = document.getElementById('connect-address'),
   connect = document.getElementById('connect'),
-  buttonConnect = document.getElementById('connect-button');
+  buttonConnect = document.getElementById('connect');
 
 let loginShown = true;
 
