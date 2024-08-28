@@ -18,9 +18,28 @@ let ui = {
     //     readout: document.getElementById('example-readout').firstChild
     // },
     autoSelect: document.getElementById('auto-select'),
-    armPosition: document.getElementById('arm-position')
+    armPosition: document.getElementById('arm-position'),
+    camera: document.getElementById('camera')
+};
+// Set a global alias for the camera and related elements.
+ui.camera = {
+	viewer: document.getElementById('camera'),
+	id: 0,
+	srcs: [ // Will default to first camera
+        'http://10.57.88.41:1182/?action=stream',
+        'http://10.57.88.40:1182/?action=stream',
+    ]
 };
 
+// Unlike most addons, this addon doesn't interact with NetworkTables. Therefore, we won't need to add any NT listeners.
+
+// When camera is clicked on, change to the next source.
+ui.camera.viewer.onclick = function() {
+	console.log("as;ofhpus")
+    ui.camera.id += 1;
+	if (ui.camera.id === ui.camera.srcs.length) ui.camera.id = 0;
+	ui.camera.viewer.style.backgroundImage = 'url(' + ui.camera.srcs[ui.camera.id] + ')';
+};
 // Key Listeners
 
 // Gyro rotation
