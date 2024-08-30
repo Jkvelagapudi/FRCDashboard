@@ -35,7 +35,6 @@ ui.camera = {
 
 // When camera is clicked on, change to the next source.
 ui.camera.viewer.onclick = function() {
-	console.log("as;ofhpus")
     ui.camera.id += 1;
 	if (ui.camera.id === ui.camera.srcs.length) ui.camera.id = 0;
 	ui.camera.viewer.style.backgroundImage = 'url(' + ui.camera.srcs[ui.camera.id] + ')';
@@ -55,33 +54,6 @@ let updateGyro = (key, value) => {
 };
 NetworkTables.addKeyListener('/SmartDashboard/drive/navx/yaw', updateGyro);
 
-// The following case is an example, for a robot with an arm at the front.
-NetworkTables.addKeyListener('/SmartDashboard/arm/encoder', (key, value) => {
-    // 0 is all the way back, 1200 is 45 degrees forward. We don't want it going past that.
-    if (value > 1140) {
-        value = 1140;
-    }
-    else if (value < 0) {
-        value = 0;
-    }
-    // Calculate visual rotation of arm
-    var armAngle = value * 3 / 20 - 45;
-    // Rotate the arm in diagram to match real arm
-    ui.robotDiagram.arm.style.transform = `rotate(${armAngle}deg)`;
-});
-
-// // This button is just an example of triggering an event on the robot by clicking a button.
-// NetworkTables.addKeyListener('/SmartDashboard/example_variable', (key, value) => {
-//     // Set class active if value is true and unset it if it is false
-//     ui.example.button.classList.toggle('active', value);
-//     ui.example.readout.data = 'Value is ' + value;
-// });
-
-// NetworkTables.addKeyListener('/Shuffleboard/Teleoperated/Total Current', (key, value) => {
-//     // Set class active if value is true and unset it if it is false
-//     // ui.example.button.classList.toggle('active', value);
-//     ui.example.readout.data = 'Value is ' + value;
-// });
 
 NetworkTables.addKeyListener('/robot/time', (key, value) => {
     // This is an example of how a dashboard could display the remaining time in a match.
