@@ -3,12 +3,13 @@
     <head>
         <meta charset="utf-8">
         <title>Freaky Dashboard</title>
-        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/Menu/dropdown.css">
+        <link rel="stylesheet" href="css/Menu/menu.css">
         <link rel="stylesheet" href="css/gyro.css">
     </head>
 
     <body>
-
         <div id = "menu-trigger" onclick="toggleMenu()">
             <img src="assets/images/Menu_Icon.png" alt = "Menu" id = "menu-icon">
         </div>
@@ -19,8 +20,17 @@
                 <h3 class="menu-title">Menu</h3>
                 <div class="menu-list">
                     <a href="index.html"><button>Main</button></a>
-                    <a href="competition.html"><button>Competition</button></a>
-                    <a href="pit.html"><button>Pit Dashboard</button></a>
+                    <a href="Pages/Competition/competition.html"><button>Competition</button></bu></a>
+                    <!-- <a href="Pages/Dashboard/pit.html"><button>Pit Dashboard</button></a> -->
+
+                    <div class="dropdown">
+                        <button class="dropdown-button" onclick="toggleDropdown()">Pit Dashboard</button>
+                        <div class="dropdown-content">
+                            <a href = "Pages/Dashboard/Checklist/checklist.html"> Checklist </a>
+                            <a href = "Pages/Dashboard/Motors/motor.html"> Motors </a>
+                            <a href = "Pages/Dashboard/Power/power.html"> Power </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="login">
@@ -33,11 +43,11 @@
 
         <!-- Main content -->
         <article id="main-content">
-            <h2>Welcome to Freaky Board</h2>
+            <h2>Welcome to Board</h2>
 
-            <div id="navigationhttp://10.57.88.40:1182/?action=stream-buttons">
-                <button onclick="navigateTo('pit-dashboard')">Pit Dashboard</button>
-                <button onclick="navigateTo('shuffleboard')">Competition</button>
+            <div id="navigation-buttons">
+                <a href="Pages/Competition/competition.html"><button>Competition</button></a>
+                <!-- <a href="Pages/Dashboard/pit.html"><button>Pit Dashboard</button></a> -->
             </div>
         </article>
 
@@ -71,13 +81,19 @@
                 }
             }
 
-            function closeMenu() {
-                const menu = document.getElementById('sidebar-menu');
-                menu.classList.remove('open');
-                setTimeout(() => {
-                    menu.style.display = 'none';
-                }, 500); // Match this duration to the CSS transition
+            function toggleDropdown() {
+                const dropdownContent = document.querySelector('.dropdown-content');
+                dropdownContent.classList.toggle('show');
             }
+            
+
+            // function closeMenu() {
+            //     const menu = document.getElementById('sidebar-menu');
+            //     menu.classList.remove('open');
+            //     setTimeout(() => {
+            //         menu.style.display = 'none';
+            //     }, 500); // Match this duration to the CSS transition
+            // }
         </script>
     </body>
 </html>
