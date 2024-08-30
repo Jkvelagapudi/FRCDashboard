@@ -186,3 +186,33 @@ button, input[type="text"], input[type="number"], .select-container, select {
     flex-direction: column;
     height: 100%;
 }
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.all-the-thingies {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.power {
+    height: 75vh;
+    width: 20vw;
+    background-color: red;
+    margin-right: 10vw;
+}
+
+.other {
+    height: 75vh;
+    width: 20vw;
+    background-color: red;
+    margin-left: 10vw;
+}
+
+.time h1 {
+    font-size: 10vh;
+}

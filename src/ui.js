@@ -2,14 +2,6 @@
 let ui = {
     timer: document.getElementById('timer'),
     robotState: document.getElementById('robot-state').firstChild,
-    gyro: {
-        container: document.getElementById('gyro'),
-        val: 0,
-        offset: 0,
-        visualVal: 0,
-        arm: document.getElementById('gyro-arm'),
-        number: document.getElementById('gyro-number')
-    },
     robotDiagram: {
         arm: document.getElementById('robot-arm')
     },
@@ -19,7 +11,9 @@ let ui = {
     // },
     autoSelect: document.getElementById('auto-select'),
     armPosition: document.getElementById('arm-position'),
-    camera: document.getElementById('camera')
+    camera: document.getElementById('camera'),
+    m1: document.getElementById('m1'),
+    gyro: document.getElementById('gyro')
 };
 // Set a global alias for the camera and related elements.
 ui.camera = {
@@ -41,18 +35,6 @@ ui.camera.viewer.onclick = function() {
 };
 // Key Listeners
 
-// Gyro rotation
-let updateGyro = (key, value) => {
-    ui.gyro.val = value;
-    ui.gyro.visualVal = Math.floor(ui.gyro.val - ui.gyro.offset);
-    ui.gyro.visualVal %= 360;
-    if (ui.gyro.visualVal < 0) {
-        ui.gyro.visualVal += 360;
-    }
-    ui.gyro.arm.style.transform = `rotate(${ui.gyro.visualVal}deg)`;
-    ui.gyro.number.textContent = ui.gyro.visualVal + 'º';
-};
-NetworkTables.addKeyListener('/SmartDashboard/drive/navx/yaw', updateGyro);
 
 
 NetworkTables.addKeyListener('/robot/time', (key, value) => {
@@ -80,6 +62,18 @@ NetworkTables.addKeyListener('/SmartDashboard/autonomous/modes', (key, value) =>
 // Load list of prewritten autonomous modes
 NetworkTables.addKeyListener('/SmartDashboard/autonomous/selected', (key, value) => {
     ui.autoSelect.value = value;
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/autonomous/selected', (key, value) => {
+    ui.autoSelect.value = value;
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/Teleoperated/Module 1 Current', (key, value) => {
+    ui.m1.value = value;
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/Teleoperated/Gyro', (key, value) => {
+    ui.gyro.value = value;
 });
 
 // The rest of the doc is listeners for UI elements being clicked on
