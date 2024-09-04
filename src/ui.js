@@ -115,8 +115,9 @@ NetworkTables.addKeyListener('/SmartDashboard/autonomous/selected', (key, value)
     ui.autoSelect.value = value;
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Teleoperated/Module 1 Current', (key, value) => {
-    ui.m1.value = value;
+NetworkTables.addKeyListener('/Shuffleboard/Teleoperated/navX-Sensor[1]/Value', (key, value) => {
+    ui.m1.textContent = value;
+    console.log(value);
 });
 
 NetworkTables.addKeyListener('/SmartDashboard/Teleoperated/Gyro', (key, value) => {
