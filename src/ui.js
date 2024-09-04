@@ -7,7 +7,7 @@ let ui = {
         val: 0,
         offset: 0,
         visualVal: 0,
-        // arm: document.getElementById('gyro-arm'),
+        arm: document.getElementById('gyro-arm'),
         number: document.getElementById('gyro-number')
     },
     robotDiagram: {
@@ -19,7 +19,9 @@ let ui = {
     // },
     autoSelect: document.getElementById('auto-select'),
     armPosition: document.getElementById('arm-position'),
-    camera: document.getElementById('camera')
+    camera: document.getElementById('camera'),
+    m1: document.getElementById('m1'),
+    gyro: document.getElementById('gyro')
 };
 // Set a global alias for the camera and related elements.
 ui.camera = {
@@ -35,7 +37,6 @@ ui.camera = {
 
 // When camera is clicked on, change to the next source.
 ui.camera.viewer.onclick = function() {
-	console.log("as;ofhpus")
     ui.camera.id += 1;
 	if (ui.camera.id === ui.camera.srcs.length) ui.camera.id = 0;
 	ui.camera.viewer.style.backgroundImage = 'url(' + ui.camera.srcs[ui.camera.id] + ')';
@@ -56,19 +57,19 @@ let updateGyro = (key, value) => {
 NetworkTables.addKeyListener('/SmartDashboard/drive/navx/yaw', updateGyro);
 
 // The following case is an example, for a robot with an arm at the front.
-// NetworkTables.addKeyListener('/SmartDashboard/arm/encoder', (key, value) => {
-//     // 0 is all the way back, 1200 is 45 degrees forward. We don't want it going past that.
-//     if (value > 1140) {
-//         value = 1140;
-//     }
-//     else if (value < 0) {
-//         value = 0;
-//     }
-//     // Calculate visual rotation of arm
-//     var armAngle = value * 3 / 20 - 45;
-//     // Rotate the arm in diagram to match real arm
-//     ui.robotDiagram.arm.style.transform = `rotate(${armAngle}deg)`;
-// });
+NetworkTables.addKeyListener('/SmartDashboard/arm/encoder', (key, value) => {
+    // 0 is all the way back, 1200 is 45 degrees forward. We don't want it going past that.
+    if (value > 1140) {
+        value = 1140;
+    }
+    else if (value < 0) {
+        value = 0;
+    }
+    // Calculate visual rotation of arm
+    var armAngle = value * 3 / 20 - 45;
+    // Rotate the arm in diagram to match real arm
+    ui.robotDiagram.arm.style.transform = `rotate(${armAngle}deg)`;
+});
 
 // // This button is just an example of triggering an event on the robot by clicking a button.
 // NetworkTables.addKeyListener('/SmartDashboard/example_variable', (key, value) => {
@@ -108,6 +109,18 @@ NetworkTables.addKeyListener('/SmartDashboard/autonomous/modes', (key, value) =>
 // Load list of prewritten autonomous modes
 NetworkTables.addKeyListener('/SmartDashboard/autonomous/selected', (key, value) => {
     ui.autoSelect.value = value;
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/autonomous/selected', (key, value) => {
+    ui.autoSelect.value = value;
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/Teleoperated/Module 1 Current', (key, value) => {
+    ui.m1.value = value;
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/Teleoperated/Gyro', (key, value) => {
+    ui.gyro.value = value;
 });
 
 // The rest of the doc is listeners for UI elements being clicked on

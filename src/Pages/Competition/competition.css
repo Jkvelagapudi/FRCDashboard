@@ -147,4 +147,37 @@ button, input[type="text"], input[type="number"], .select-container, select {
     display: flex;
     flex-direction: column;
     height: 100%;
+<<<<<<< HEAD
+=======
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.all-the-thingies {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.power {
+    height: 75vh;
+    width: 20vw;
+    background-color: red;
+    margin-right: 10vw;
+}
+
+.other {
+    height: 75vh;
+    width: 20vw;
+    background-color: red;
+    margin-left: 10vw;
+}
+
+.time h1 {
+    font-size: 10vh;
+>>>>>>> c16c5b906813f3b5a926eebedd48ef401781fa27
 }

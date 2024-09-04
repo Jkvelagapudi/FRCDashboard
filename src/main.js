@@ -1,7 +1,6 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const path = require('path');
 const electron = require('electron');
 const wpilib_NT = require('wpilib-nt-client');
 const client = new wpilib_NT.Client();
@@ -96,16 +95,15 @@ function createWindow() {
     });
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 1366,
-        height: 570,
+        // width: 1366,
+        width: 1920,
+        height: 625,
         // 1366x570 is a good standard height, but you may want to change this to fit your DriverStation's screen better.
         // It's best if the dashboard takes up as much space as possible without covering the DriverStation application.
         // The window is closed until the python server is ready
         show: false,
-        icon: __dirname + '/assets/images/icon.png',
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
-        }
+        frame: false,
+        icon: __dirname + '/../images/icon.png'
     });
     // Move window to top (left) of screen.
     mainWindow.setPosition(0, 0);
