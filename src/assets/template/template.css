@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+@font-face {
+    font-family: 'K2D-Semibold';
+    src: url(../fonts/K2D-SemiBold.ttf) format('truetype'); /* Adjust based on the file location */
+}
+
+:root {
+    --font-family: 'K2D-Semibold', sans-serif;
+}
+
+/* Add Stuff Under */

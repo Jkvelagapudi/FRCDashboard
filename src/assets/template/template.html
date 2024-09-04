@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Freaky Dashboard</title>
 
         <!-- Default Imports -->
-        <link rel="stylesheet" href="css/Menu/dropdown.css">
-        <link rel="stylesheet" href="css/Menu/menu.css">
-        <link rel="stylesheet" href="css/Menu/connection.css">
-
-        <!-- Additional Imports -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/gyro.css">
+        <link rel="stylesheet" href="css/Menu/dropdown.css"> <!-- CHANGE PATH ACCORDINGLY -->
+        <link rel="stylesheet" href="css/Menu/menu.css"> <!-- CHANGE PATH ACCORDINGLY -->
+        <link rel="stylesheet" href="css/Menu/connection.css"> <!-- CHANGE PATH ACCORDINGLY -->
+        <!-- Include other styles here -->
     </head>
 
     <body>
-        <div id="menu-trigger" onclick="toggleMenu()">
-            <img src="assets/images/Menu_Icon.png" alt = "Menu" id = "menu-icon">
+        <div id = "menu-trigger" onclick="toggleMenu()">
+            <img src="assets/images/Menu_Icon.png" alt = "Menu" id = "menu-icon"> <!-- CHANGE PATH ACCORDINGLY -->
         </div>
 
         <!-- Sidebar menu -->
@@ -25,16 +21,16 @@
             <div id="menu-content">
                 <h3 class="menu-title">Menu</h3>
                 <div class="menu-list">
-                    <a href="index.html"><button>Main</button></a>
-                    <a href="Pages/Competition/competition.html"><button>Competition</button></bu></a>
+                    <a href="index.html"><button>Main</button></a> <!-- CHANGE PATH ACCORDINGLY -->
+                    <a href="Pages/Competition/competition.html"><button>Competition</button></bu></a> <!-- CHANGE PATH ACCORDINGLY -->
                     <!-- <a href="Pages/Dashboard/pit.html"><button>Pit Dashboard</button></a> -->
 
                     <div class="dropdown">
                         <button class="dropdown-button" onclick="toggleDropdown()">Pit Dashboard</button>
                         <div class="dropdown-content">
-                            <a href = "Pages/Dashboard/Checklist/checklist.html"> Checklist </a>
-                            <a href = "Pages/Dashboard/Motors/motor.html"> Motors </a>
-                            <a href = "Pages/Dashboard/Power/power.html"> Power </a>
+                            <a href = "Pages/Dashboard/Checklist/checklist.html"> Checklist </a> <!-- CHANGE PATH ACCORDINGLY -->
+                            <a href = "Pages/Dashboard/Motors/motor.html"> Motors </a> <!-- CHANGE PATH ACCORDINGLY -->
+                            <a href = "Pages/Dashboard/Power/power.html"> Power </a> <!-- CHANGE PATH ACCORDINGLY -->
                         </div>
                     </div>
                 </div>
@@ -47,22 +43,17 @@
             </div>
         </aside>
 
-        <!-- Main content -->
         <article id="main-content">
-            <h2>Welcome to Board</h2>
 
-            <div id="navigation-buttons">
-                <a href="Pages/Competition/competition.html"><button>Competition</button></a>
-                <!-- <a href="Pages/Dashboard/pit.html"><button>Pit Dashboard</button></a> -->
-            </div>
         </article>
 
-        <script src="networktables/networktables.js"></script>
-        <script src="ui.js"></script>
-        <script src="connection.js"></script>
-        <script src="../node_modules/@frc-web-components/frc-web-components/build/frc-web-components.min.js"></script>
+        <script src="networktables/networktables.js"></script> <!-- CHANGE PATH ACCORDINGLY -->
+        <script src="ui.js"></script> <!-- CHANGE PATH ACCORDINGLY -->
+        <script src="connection.js"></script> <!-- CHANGE PATH ACCORDINGLY -->
+        <script src="../node_modules/@frc-web-components/frc-web-components/build/frc-web-components.min.js"></script> <!-- CHANGE PATH ACCORDINGLY -->
+
+        <!-- For all functions and other Javascript things -->
         <script>
-            // JavaScript to open/close the menu with animation
             function toggleMenu() {
                 const menu = document.getElementById('sidebar-menu');
                 const menuTrigger = document.getElementById('menu-trigger');
@@ -75,7 +66,7 @@
                         menu.style.display = 'none';
                     }, 500); // Match this duration to the CSS transition
                     menuTrigger.classList.remove('open');
-                    menuIcon.src = 'assets/images/Menu_Icon.png'; // Switch back to hamburger icon
+                    menuIcon.src = 'assets/images/Menu_Icon.png'; // CHANGE PATH ACCORDINGLY
                 } else {
                     // Opening menu animation
                     menu.style.display = 'block';
@@ -83,7 +74,7 @@
                         menu.classList.add('open');
                     }, 10);
                     menuTrigger.classList.add('open');
-                    menuIcon.src = 'assets/images/Menu_Icon_Close.png'; // Switch to close icon
+                    menuIcon.src = 'assets/images/Menu_Icon_Close.png'; // CHANGE PATH ACCORDINGLY
                 }
             }
 

@@ -6,6 +6,8 @@
         <title>Shuffleboard</title>
         <link rel="stylesheet" href="competition.css">
         <link rel="stylesheet" href="../../css/multicamera.css">
+        <link rel="stylesheet" href="../../css/gyro.css">
+        <link rel="stylesheet" href="../../css/Menu/dropdown.css">
     </head>
 
     <body>
@@ -19,7 +21,16 @@
                 <div class="menu-list">
                     <a href="../../index.html"><button>Main</button></a>
                     <a href="competition.html"><button>Competition</button></a>
-                    <a href="../Dashboard/pit.html"><button>Pit Dashboard</button></a>
+                    <!-- <a href="../Dashboard/pit.html"><button>Pit Dashboard</button></a> -->
+
+                    <div class="dropdown">
+                        <button class="dropdown-button" onclick="toggleDropdown()">Pit Dashboard</button>
+                        <div class="dropdown-content">
+                            <a href = "../Dashboard/Checklist/checklist.html"> Checklist </a>
+                            <a href = "../Dashboard/Motors/motor.html"> Motors </a>
+                            <a href = "../Dashboard/Power/power.html"> Power </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="login">
@@ -32,6 +43,13 @@
 
         <main id="main-content">
             <div id="camera"></div>
+
+            <svg id="gyro">
+                <circle cx="85" cy="85" r="83"></circle>
+                <circle cx="85" cy="85" r="50"></circle>
+                <rect id="gyro-arm" x="80" y="5" width="10" height="80"></rect>
+                <text id="gyro-number" x="90" y="115">0º</text>
+            </svg>
         </main>
 
         <script src="../../networktables/networktables.js"></script>
@@ -64,13 +82,18 @@
                 }
             }
 
-            function closeMenu() {
-                const menu = document.getElementById('sidebar-menu');
-                menu.classList.remove('open');
-                setTimeout(() => {
-                    menu.style.display = 'none';
-                }, 500); // Match this duration to the CSS transition
+            function toggleDropdown() {
+                const dropdownContent = document.querySelector('.dropdown-content');
+                dropdownContent.classList.toggle('show');
             }
+
+            // function closeMenu() {
+            //     const menu = document.getElementById('sidebar-menu');
+            //     menu.classList.remove('open');
+            //     setTimeout(() => {
+            //         menu.style.display = 'none';
+            //     }, 500); // Match this duration to the CSS transition
+            // }
         </script>
     </body>
 </html>

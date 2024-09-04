@@ -4,74 +4,19 @@
     margin: 0;
     padding: 0;
 }
+
 ::-webkit-scrollbar {
     display: none;
 }
 
-/* Sidebar styles */
-aside#sidebar-menu {
-    position: fixed;
-    left: -20vw;
-    top: 1.75vh;
-    width: 20vw;
-    height: 96.5vh;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    transition: left 0.5s ease;
-    z-index: 1000;
-    padding: 40px 20px 20px;
-    border-radius: 10px;
+@font-face {
+    font-family: 'K2D-Semibold';
+    src: url(../assets/fonts/K2D-SemiBold.ttf) format('truetype');
 }
 
-aside#sidebar-menu.open {
-    left: 20px;
-    display: block;
+:root {
+    --font-family: 'K2D-Semibold', sans-serif;
 }
-
-/* Sidebar content */
-#menu-content {
-    color: white;
-}
-
-#menu-content h3 {
-    margin-bottom: 20px;
-}
-
-/* Close button */
-#close-menu {
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-/* Menu trigger styles*/
-#menu-trigger {
-    cursor: pointer;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    transition: left 0.5s ease, transform 0.5s ease;
-    z-index: 1100;
-}
-
-#menu-trigger.open {
-    left: calc(20vw + 30px); /* Moves the trigger along with the menu */
-    transform: rotate(90deg);
-}
-
-#menu-icon {
-    width: 50px;
-    height: 50px;
-    transition: transform 0.5s ease;
-}
-
-/* Hide original content under the sidebar */
-/* aside#sidebar-menu.open ~ * {
-    filter: blur(2px);
-} */
 
 /* Body */
 body {
@@ -104,6 +49,7 @@ button, input[type="text"], input[type="number"], .select-container, select {
 }
 
 #main-content h2 {
+    font-family: var(--font-family);
     font-size: 2em;
     margin-bottom: 2em;
 }
@@ -121,115 +67,9 @@ button, input[type="text"], input[type="number"], .select-container, select {
     font-size: 1.2em;
     width: 12em;
     transition: background-color 0.3s ease;
+    font-family: var(--font-family);
 }
 
 #navigation-buttons button:hover {
     background-color: #444b7a;
-}
-
-/* SVG Animation */
-/* #menu-trigger.open {
-    transform: rotate(90deg);
-} */
-
-#connect-address {
-    background-color: #222642;
-    border-radius: 20px;
-    width: 10vw;
-    height: 5vh;
-}
-
-#connect button {
-    background-color: #222642;
-}
-
-
-.menu-list button {
-    margin: 1vh;
-    border-radius: 1vw;
-    padding: 2vh;
-    background-color: hsla(213, 100%, 29%, 0.3);
-    transition: background-color 0.3s ease;
-}
-
-.menu-list button:hover {
-    background-color: #444b7a;
-}
-
-.menu-title {
-    text-align: center;
-    margin-bottom: 2vh;
-}
-
-.menu-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-
-#login {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-#menu-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.dropdown-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 10vw;
-    background: hsla(213, 100%, 29%, 0.3);
-    border-radius: 1vw;
-    padding: 2vh;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-button:hover {
-    background-color: #444b7a;
-}
-
-.dropdown-content {
-    display: none;
-    flex-direction: column;
-    background-color: hsla(213, 100%, 29%, 0.3);
-    border-radius: 1vw;
-    padding: 1vh;
-    margin-top: 1vh;
-    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    overflow: hidden;
-    opacity: 0;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.dropdown-content a {
-    color: white;
-    text-decoration: none;
-    padding: 1vh;
-    margin: 0.5vh 0;
-    background-color: hsla(213, 100%, 29%, 0.3);
-    border-radius: 1vw;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-content a:hover {
-    background-color: #444b7a;
-}
-
-.dropdown-content.show {
-    display: flex;
-    max-height: 200px; /* Adjust as needed */
-    opacity: 1;
 }

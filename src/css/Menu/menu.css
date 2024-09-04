@@ -1,0 +1,98 @@
+/* General things */
+@font-face {
+    font-family: 'K2D-Semibold';
+    src: url(../../assets/fonts/K2D-SemiBold.ttf) format('truetype');
+}
+
+:root {
+    --font-family: 'K2D-Semibold', sans-serif;
+}
+
+/* Menu Trigger Things */
+#menu-trigger {
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    transition: left 0.5s ease, transform 0.5s ease;
+    z-index: 1100;
+}
+
+#menu-trigger.open {
+    left: calc(20vw + 30px); /* Moves the trigger along with the menu */
+    transform: rotate(90deg);
+}
+
+#menu-icon {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.5s ease;
+}
+
+/* Menu Content */
+aside#sidebar-menu {
+    position: fixed;
+    left: -20vw;
+    top: 1.75vh;
+    width: 20vw;
+    height: 96.5vh;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: left 0.5s ease;
+    z-index: 1000;
+    padding: 40px 20px 20px;
+    border-radius: 10px;
+}
+
+aside#sidebar-menu.open {
+    left: 20px;
+    display: block;
+    /* filter: blur(2px); */
+}
+
+#menu-content {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.menu-title {
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+/* Menu list/buttons */
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-list button {
+    color: white;
+    margin: 1vh;
+    border-radius: 1vw;
+    padding: 2vh;
+    background: hsla(213, 100%, 29%, 0.3);
+    transition: background-color 0.3s ease;
+    font-family: var(--font-family);
+    border: none;
+    cursor: pointer;
+    outline: 0;
+}
+
+.menu-list button:hover {
+    background-color: #444b7a;
+}
+
+/* Close Menu Stuff */
+#close-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
