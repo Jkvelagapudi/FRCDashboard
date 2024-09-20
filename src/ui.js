@@ -20,6 +20,7 @@ let ui = {
     autoSelect: document.getElementById('auto-select'),
     armPosition: document.getElementById('arm-position'),
     camera: document.getElementById('camera'),
+    camera2: document.getElementById('camera2'),
     m1: document.getElementById('m1'),
     gyro: document.getElementById('gyro')
 };
@@ -29,18 +30,34 @@ ui.camera = {
 	id: 0,
 	srcs: [ // Will default to first camera
         'http://10.57.88.41:1182/?action=stream',
-        'http://10.57.88.40:1182/?action=stream',
+        // 'http://10.57.88.40:1182/?action=stream',
     ]
 };
 
 // Unlike most addons, this addon doesn't interact with NetworkTables. Therefore, we won't need to add any NT listeners.
 
 // When camera is clicked on, change to the next source.
-ui.camera.viewer.onclick = function() {
-    ui.camera.id += 1;
-	if (ui.camera.id === ui.camera.srcs.length) ui.camera.id = 0;
-	ui.camera.viewer.style.backgroundImage = 'url(' + ui.camera.srcs[ui.camera.id] + ')';
+// ui.camera.viewer.onclick = function() {
+//     ui.camera.id += 1;
+// 	if (ui.camera.id === ui.camera.srcs.length) ui.camera.id = 0;
+// 	ui.camera.viewer.style.backgroundImage = 'url(' + ui.camera.srcs[ui.camera.id] + ')';
+// };
+
+ui.camera2 = {
+    viewer: document.getElementById('camera2'),
+    id: 0,
+    srcs: [
+        'http://10.57.88.40:1182/?action=stream',
+        'http://10.57.88.41:1182/?action=stream',
+    ]
 };
+
+ui.camera2.viewer.onclick = function() {
+    ui.camera2.id += 1;
+    if (ui.camera2.id === ui.camera2.srcs.length) ui.camera2.id = 0;
+    ui.camera2.viewer.style.backgroundImage = 'url(' + ui.camera2.srcs[ui.camera2.id] + ')';
+}
+
 // Key Listeners
 
 // Gyro rotation

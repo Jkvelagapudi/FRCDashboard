@@ -4,10 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Shuffleboard</title>
+
+        <link rel="stylesheet" href="../../css/Menu/dropdown.css">
+        <link rel="stylesheet" href="../../css/Menu/menu.css">
+        <link rel="stylesheet" href="../../css/Menu/connection.css">
+
         <link rel="stylesheet" href="competition.css">
         <link rel="stylesheet" href="../../css/multicamera.css">
         <link rel="stylesheet" href="../../css/gyro.css">
-        <link rel="stylesheet" href="../../css/Menu/dropdown.css">
+        
     </head>
 
     <body>
@@ -45,18 +50,32 @@
             <div class="time">
                 <h1> 2:15 </h1>
             </div>
-            <div class="all-the-thingies">
+
+            <div id = "camera-container">
+                <div id="camera"></div>
+                <div id="camera2"></div>
+            </div>
+
+            <div id = "field-and-gyro-container">
+                <div id = "field-container">
+                    <img src="../../assets/images/2024-field.png" alt="FRC 2024 Field" id="field-image">
+    
+                    <div id = "robot-indicator"></div>
+                </div>
+
+                <div id="gyro"></div>                                         
+            </div>
+
+            <!-- <div class="all-the-thingies">
                 <div class="power">
                     <h1 id="gryo"> Hello </h1>
                     <h1 id="m1"> World </h1>
 
-                </div>
+            </div> -->
 
-                <div id="camera"></div>
+                <!-- <div class="other">
 
-                <div class="other">
-
-                </div>
+                </div> -->
             </div>
         </main>
 
@@ -95,13 +114,18 @@
                 dropdownContent.classList.toggle('show');
             }
 
-            // function closeMenu() {
-            //     const menu = document.getElementById('sidebar-menu');
-            //     menu.classList.remove('open');
-            //     setTimeout(() => {
-            //         menu.style.display = 'none';
-            //     }, 500); // Match this duration to the CSS transition
-            // }
+            function updateRobotPosition(x,y) {
+                const field = document.getElementById('field-container');
+                const robot = document.getElementById('robot-indicator');
+
+                const fieldWidth = field.offsetWidth;
+                const fieldHeight = field.offsetHeight;
+
+                const posX = (x/100) * fieldWidth;
+                const posY = (y/100) * fieldHeight;
+
+                robot.style.transform = 'translate(${posX}px, ${posY}px)';
+            }
         </script>
     </body>
 </html>
