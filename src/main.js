@@ -5,6 +5,7 @@ const path = require('path');
 const electron = require('electron');
 const wpilib_NT = require('wpilib-nt-client');
 const client = new wpilib_NT.Client();
+const screen = electron.screen;
 
 // The client will try to reconnect after 1 second
 client.setReconnectDelay(1000)
@@ -42,6 +43,7 @@ let clientDataListener = (key, val, valType, mesgType, id, flags) => {
     });
 };
 function createWindow() {
+    const {width, height} = screen.getPrimaryDisplay().workAreaSize;
     // Attempt to connect to the localhost
     client.start((con, err) => {
 
@@ -95,8 +97,8 @@ function createWindow() {
         console.log(error);
     });
     mainWindow = new BrowserWindow({
-        width: 1920,
-        height: 675,
+        width: width,
+        height: height * 0.75,
         // 1366x570 is a good standard height, but you may want to change this to fit your DriverStation's screen better.
         // It's best if the dashboard takes up as much space as possible without covering the DriverStation application.
         // The window is closed until the python server is ready

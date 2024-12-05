@@ -70,11 +70,6 @@ button, input[type="text"], input[type="number"], .select-container, select {
     background-color: #444b7a;
 }
 
-#main-content {
-    display: flex;
-    flex-direction: column;
-}
-
 .all-the-thingies {
     display: flex;
     flex-direction: row;
@@ -104,8 +99,8 @@ button, input[type="text"], input[type="number"], .select-container, select {
 
 #field-container {
     position: relative;
-    width: 1020px;
-    height: 200px;
+    width: 53vw;
+    height: 38vh;
     margin-bottom: 10px;
     margin-left: 10px;
 }
@@ -115,6 +110,7 @@ button, input[type="text"], input[type="number"], .select-container, select {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    scale: 1
 }
 
 #robot-indicator {

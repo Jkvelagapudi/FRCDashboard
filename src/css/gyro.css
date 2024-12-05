@@ -1,9 +1,12 @@
 #gyro {
-    width: 175px;
-    height: 175px;
+    width: 225px;
+    height: 225px;
     border: solid 2px black;
     border-radius: 50%;
+    margin-top: 10px;
+    background-color: red;
 }
+
 #gyro-arm {
     transform-origin: bottom;
 }

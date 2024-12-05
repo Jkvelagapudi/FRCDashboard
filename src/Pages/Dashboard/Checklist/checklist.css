@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+@font-face {
+    font-family: 'K2D-Semibold';
+    src: url(../assets/fonts/K2D-SemiBold.ttf) format('truetype');
+}
+
+:root {
+    --font-family: 'K2D-Semibold', sans-serif;
+}
+
+body {
+    font: 16px sans-serif;
+    color: white;
+    background: #222;
+    overflow: hidden;
+}
+
+/* Button styles */
+button, input[type="text"], input[type="number"], .select-container, select {
+    color: white;
+    background: #444;
+    border: none;
+    font-size: 14px;
+    padding: 6px 8px;
+    cursor: pointer;
+    outline: 0;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    height: 100vh;
+    background: linear-gradient(to bottom right, #00174a, #2c0c3f, #3e0031, #470020, #48000e);
+}
+
+#main-content h2 {
+    font-size: 2em;
+    margin-bottom: 2em;
+}
+
+#navigation-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#navigation-buttons button {
+    background-color: #222642;
+    border-radius: 20px;
+    padding: 1em 2em;
+    font-size: 1.2em;
+    width: 12em;
+    transition: background-color 0.3s ease;
+}
+
+#navigation-buttons button:hover {
+    background-color: #444b7a;
+}
+
